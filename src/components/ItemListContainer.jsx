@@ -1,6 +1,4 @@
-import ItemCount from './ItemCount';
 import ItemList from './ItemList';
-import { Wrapper } from './styledComponents';
 import customFetch from "../utils/customFetch";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
@@ -26,7 +24,6 @@ const ItemListContainer = () => {
     return (
         <>  
             <ItemList items={datos} />
-            <ItemCount stock={5} initial={1} onAdd={onAdd} />
         </>
     );
 }
