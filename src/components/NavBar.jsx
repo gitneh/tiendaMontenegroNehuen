@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import CartWidget from "./CartWidget";
 import { Wrapper, Logo, MenuItem, Left, Center, Right } from './styledComponents';
-
+import SearchForm from "./SearchForm";
 const NavBar = () => {
     return (
         <div>
@@ -12,7 +12,8 @@ const NavBar = () => {
                 <Center>
                     <Link to='/category/9' style={{textDecoration: "none", color: "white"}}><MenuItem>Nefertari</MenuItem></Link>
                     <Link to='/category/1' style={{textDecoration: "none", color: "white"}}><MenuItem>Horus</MenuItem></Link>
-                    <Link to='/category/5' style={{textDecoration: "none", color: "white"}}><MenuItem>Escarabajos</MenuItem></Link>                    
+                    <Link to='/category/5' style={{textDecoration: "none", color: "white"}}><MenuItem>Escarabajos</MenuItem></Link>
+                    <SearchForm />                
                 </Center>
                 <Right>
                     <MenuItem>REGISTER</MenuItem>

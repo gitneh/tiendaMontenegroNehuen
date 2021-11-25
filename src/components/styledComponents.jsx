@@ -152,10 +152,26 @@ const Price  = styled.span`
     font-weight: 100;
     font-size: 40px;
 `;
+const SearchContainer = styled.div`
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+    padding: 5px;
+`;
+
+const Input = styled.input`
+    margin-right: 5px;
+    border: none;
+    outline: none;
+`;
 
 export { 
     Wrapper, Logo, MenuItem, Left, Center, Right, 
     ProductAmountContainer, ProductAmount, 
     ProductsContainer, ProductContainer, Image, Info, Icon,
-    DetailContainer, WrapperDetail, ImgContainer, ImageDetail, InfoContainer, Title, Desc, Price
+    DetailContainer, WrapperDetail, ImgContainer, ImageDetail, 
+    InfoContainer, Title, Desc, Price, SearchContainer,
+    Input,
 }
