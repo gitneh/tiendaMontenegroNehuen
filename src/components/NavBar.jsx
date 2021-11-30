@@ -18,7 +18,7 @@ const NavBar = () => {
                 <Right>
                     <MenuItem>REGISTER</MenuItem>
                     <MenuItem>SIGN IN</MenuItem>
-                    <MenuItem><CartWidget /></MenuItem>
+                    <MenuItem><Link to='/cart'><CartWidget /></Link></MenuItem>
                 </Right>
             </Wrapper>
         </div>

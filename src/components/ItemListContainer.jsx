@@ -1,6 +1,4 @@
-import ItemCount from './ItemCount';
 import ItemList from './ItemList';
-import { Wrapper } from './styledComponents';
 import customFetch from "../utils/customFetch";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
@@ -19,14 +17,15 @@ const ItemListContainer = () => {
             .catch(err => console.log(err))
     }, [datos]);
 
-    const onAdd = (qty) => {
-        alert("You have selected " + qty + " items.");
-    }
+    useEffect(() => {
+        return (() => {
+            setDatos([]);
+        })
+    }, []);
 
     return (
         <>  
             <ItemList items={datos} />
-            <ItemCount stock={5} initial={1} onAdd={onAdd} />
         </>
     );
 }

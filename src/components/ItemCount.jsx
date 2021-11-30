@@ -5,7 +5,6 @@ import { ProductAmountContainer, ProductAmount } from './styledComponents';
 
 const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
     const [count, setCount] = useState(0);
-
     useEffect(() => {
         setCount(initial);
     },[]);
@@ -27,9 +26,9 @@ const ItemCount = ({ stock = 0, initial = 1,  onAdd }) => {
             <ProductAmount>{count}</ProductAmount>
             <Button variant="text" onClick={decrement}><Remove /></Button>
             {
-                stock
-                ? <Button variant="contained" color="primary" onClick={() => onAdd(count)}>Add to Cart</Button>
-                : <Button variant="contained" disabled>Add to Cart</Button>
+                stock && count
+                ? <Button variant="contained" color="primary" onClick={() => onAdd(count)}>Agregar al carrito</Button>
+                : <Button variant="contained" disabled>Agregar al carrito</Button>
             }
             
         </ProductAmountContainer>
