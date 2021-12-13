@@ -20,6 +20,7 @@ const CartContextProvider = ({ children }) => {
             ]);
         } else {
             found.nnItem += nn;
+            setCartList([...cartList]);
         }
     }
     

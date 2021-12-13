@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { CartContext } from './CartContext';
 import { WrapperCart, TitleCart, ContentCart, Product, ProductDetail, ImageCart, Details, PriceDetail, ProductAmountContainer, ProductAmount, ProductPrice, Hr } from './styledComponents';
 import Formato from "../utils/Formato";
 import styled from "styled-components";
+import { collection, doc, setDoc, updateDoc, increment } from "firebase/firestore";
+import db from '../utils/firebase';
 
 const Top = styled.div`
   display: flex;
@@ -68,7 +70,40 @@ const Button = styled.button`
 `;
 
 const Cart = () => {
-    const test = useContext(CartContext);
+    const test = useContext(CartContext); 
+    const createOrder = () => {
+      let order = {
+        buyer: {
+          name: "Pepito Juarez",
+          email: "pepito@hotmail.com",
+          phone: "1234112233"
+        },
+        item: test.cartList.map(item => ({
+          id: item.idItem,
+          title: item.nameItem,
+          price: item.costItem,
+          nn: item.nnItem
+        })),
+        total: test.calcTotal()
+
+        };
+        const createOrderInFirestore = async() =>{
+          const newOrderRef = doc (collection(db , "orders"));
+          await setDoc (newOrderRef, order);
+          return newOrderRef;
+        }
+        createOrderInFirestore()
+          .then(result => alert(result.id))
+          .catch(err => console.log(err))
+        test.cartList.forEach(async(item) => {
+          const itemRef = doc(db, "products", item.idItem);
+          await updateDoc(itemRef, {
+            stock: increment(-item.nnItem)
+            
+          })
+        })
+        test.removeList();
+    }
 
     return (
         <WrapperCart>
@@ -129,7 +164,7 @@ const Cart = () => {
                                 <SummaryItemText>Total</SummaryItemText>
                                 <SummaryItemPrice><Formato number={test.calcTotal()} /></SummaryItemPrice>
                             </SummaryItem>
-                            <Button>CHECKOUT NOW</Button>
+                            <Button onClick={createOrder}>CHECKOUT NOW</Button>
                         </Summary>
                 }
             </Bottom>
