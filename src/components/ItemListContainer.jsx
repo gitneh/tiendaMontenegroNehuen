@@ -1,7 +1,7 @@
 import ItemList from './ItemList';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import firefetch from '../utils/firefetch';
+import firesFetch from '../utils/firesFetch';
 
 
 const ItemListContainer = () => {
@@ -9,7 +9,7 @@ const ItemListContainer = () => {
     const { idCategory } = useParams();
 
     useEffect(() => {
-        firefetch(idCategory)
+        firesFetch(idCategory)
         .then((result) => setDatos(result))
         .catch(err => console.log(err));
     }, [idCategory]);

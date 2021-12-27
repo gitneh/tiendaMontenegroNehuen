@@ -5,7 +5,7 @@ import { WrapperCart, TitleCart, ContentCart, Product, ProductDetail, ImageCart,
 import Formato from "../utils/Formato";
 import styled from "styled-components";
 import { collection, doc, setDoc, updateDoc, increment } from "firebase/firestore";
-import db from '../utils/firebase';
+import db from '../utils/firebaseConfig';
 
 const Top = styled.div`
   display: flex;
